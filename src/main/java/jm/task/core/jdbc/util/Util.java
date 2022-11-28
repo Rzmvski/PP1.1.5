@@ -20,7 +20,7 @@ public class Util {
     private static final String PASSWORD = "root";
 
     // JDBC configs
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
         try {
             Class.forName(DRIVER);
@@ -61,5 +61,10 @@ public class Util {
             }
         }
         return sessionFactory;
+    }
+    public static void SessionFactoryDestroyer() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
